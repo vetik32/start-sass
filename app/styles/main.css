@@ -5195,3 +5195,11 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+.navbar-default {
+  background-color: transparent;
+  border-color: transparent; }
+  .navbar-default .navbar-collapse {
+    background-color: #f8f8f8; }
+
+.navbar-toggle {
+  background-color: #fff; }

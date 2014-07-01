@@ -3,3 +3,17 @@
 // bower:scss
 @import '../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss';
 // endbower
+
+.navbar-default {
+  background-color: transparent;
+  border-color: transparent;
+
+  .navbar-collapse {
+    background-color: $navbar-default-bg;
+  }
+}
+
+.navbar-toggle {
+  background-color: #fff;
+}
+
