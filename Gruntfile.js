@@ -17,6 +17,8 @@ module.exports = function (grunt) {
 
     // Configurable paths
     var config = {
+        bowerDir: 'bower_components',
+        theme: '..',
         app: 'app',
         dist: 'dist'
     };
@@ -334,6 +336,35 @@ module.exports = function (grunt) {
                 cwd: '<%= config.app %>/styles',
                 dest: '.tmp/styles/',
                 src: '{,*/}*.css'
+            },
+            libs: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= config.dist %>',
+                        dest: '<%= config.theme %>',
+                        src: [
+                            'styles/{,*/}*',
+                            'scripts/{,*/}*',
+                            '<%= config.bowerDir%>'
+                        ]
+                    },
+                    {
+                        expand: true,
+                        cwd: '<%= config.dist %>',
+                        dest: '<%= config.theme %>/inc',
+                        src: [
+                            '*_scripts.html',
+                            '*_styles.html'
+                        ]
+                    },
+                    {
+                        expand: true,
+                        cwd: '.',
+                        src: ['<%= config.bowerDir%>/bootstrap-sass-official/vendor/assets/fonts/bootstrap/*.*'],
+                        dest: '<%= config.dist %>'
+                    }
+                ]
             }
         },
 
@@ -426,5 +457,10 @@ module.exports = function (grunt) {
         'newer:jshint',
         'test',
         'build'
+    ]);
+
+    grunt.registerTask('dist', [
+        'build',
+        'copy:libs'
     ]);
 };
